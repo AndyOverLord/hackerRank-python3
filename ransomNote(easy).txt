@@ -1,0 +1,40 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the checkMagazine function below.
+def checkMagazine(magazine, note):
+    a_dict = {}
+    for word in magazine:
+        if word in a_dict:
+            a_dict[word] += 1
+        else:
+            a_dict[word] = 1
+    for word in note:
+        if word not in a_dict:
+            return "No"
+        else:
+            a_dict[word] -= 1
+    for key in a_dict.keys():
+        if a_dict[key] < 0:
+            return "No"
+    return "Yes"
+
+if __name__ == '__main__':
+    mn = input().split()
+
+    m = int(mn[0])
+
+    n = int(mn[1])
+
+    magazine = input().rstrip().split()
+
+    note = input().rstrip().split()
+
+    result = checkMagazine(magazine, note)
+
+    print(result)
